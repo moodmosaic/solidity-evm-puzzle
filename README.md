@@ -1,66 +1,12 @@
-## Foundry
+Solidity/EVM puzzle #1
+https://twitter.com/atiselsts_eth/status/1716361342083342454
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+Besides testing with `forge test`, manual testing is also possible:
 
-Foundry consists of:
-
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
-
-## Documentation
-
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
-$ forge build
-```
-
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+1. Run `anvil`, copy the first private key, which by default is 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+2. Run `forge create StackDepth --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80`
+3. Copy the deployment address (e.g. 0x5FbDB2315678afecb367f032d93F642f64180aa3)
+4. Run `cast call 0x5FbDB2315678afecb367f032d93F642f64180aa3 "externalCall(uint256 n)" 429`
+5. Run `cast call 0x5FbDB2315678afecb367f032d93F642f64180aa3 "externalCall(uint256 n)" 430`
+6. Run `cast call 0x5FbDB2315678afecb367f032d93F642f64180aa3 "internalCall(uint256 n)" 338`
+7. Run `cast call 0x5FbDB2315678afecb367f032d93F642f64180aa3 "internalCall(uint256 n)" 339`
